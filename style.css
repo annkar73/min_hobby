@@ -47,6 +47,7 @@ header{
 
 #sidebar {
   width: 10vw;
+  height: 100vh;
   background-color: aquamarine;
   padding: 20px;
 }
