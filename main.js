@@ -54,3 +54,25 @@ document.getElementById("aboutLink"). addEventListener("click", showAbout);
 document.getElementById("contactLink").addEventListener("click", showContact);
 
 showHome();
+
+document.addEventListener("DOMContentLoaded", function() {
+  const dropBtn = document.querySelector(".dropBtn");
+  const dropdownContent = document.querySelector(".dropdown-content");
+
+  dropBtn.addEventListener("mouseenter", function() {
+    dropdownContent.style.display = "block";
+  });
+
+  dropdownContent.addEventListener("mouseleave", function(event) {
+    if (!isMouseInsideDropdown(event)) {
+      dropdownContent.style.display = "none";}
+
+  });
+
+  function isMouseInsideDropdown(event) {
+    return (
+      dropdownContent.contains(event.relatedTarget) ||
+      dropBtn.contains(event.relatedTarget)
+    );
+  }
+});
