@@ -1,15 +1,20 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Kokböcker!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Jag kan inte hjälpa det, jag gillar kokböcker... 
-    </p>
-  </div>
-`
+function showHome() {
+  document.getElementById("content").textContent = "Välkommen. Här ska det hamna innehåll";
+}
 
-setupCounter(document.querySelector('#counter'))
+function showAbout() {
+  document.getElementById("content").textContent = "Om mig. Här kommer det info om mig";
+
+}
+
+function showContact() {
+  document.getElementById("content").textContent = "Kontakta mig för mer information";
+}
+
+document.getElementById("homeLink").addEventListener("click", showHome);
+document.getElementById("aboutLink"). addEventListener("click", showAbout);
+document.getElementById("contactLink").addEventListener("click", showContact);
+
+showHome();
