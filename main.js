@@ -2,12 +2,19 @@ import './style.css'
 
 function showHome() {
   let contentDiv = document.getElementById('content');
+  contentDiv.textContent = "";
   let contentTitle = document.createElement('h1');
   contentTitle.textContent = "Välkommen!";
-  let contentText = document.createElement('p');
-  contentText.textContent = "Jag har en passion för kokböcker. Inte så att jag följer recept, utan snarare läser jag dem och roas av att få inspiration av recepten. Ju äldre böcker desto bättre, men det hindrar ju såklart inte att jag fyndar lite på bokrean när jag har chansen.";
+  let contentParagraph1 = document.createElement('p');
+  contentParagraph1.textContent = "Jag har en passion för kokböcker. Inte så att jag följer recept, utan snarare läser jag dem och roas av att få inspiration av recepten. Ju äldre böcker desto bättre, men det hindrar ju såklart inte att jag fyndar lite på bokrean när jag har chansen.";
+  let contentParagraph2 = document.createElement('p');
+  contentParagraph2.textContent = "Min huvudsakliga hobby nuförtiden är dock att baka glutenfritt. Inte så mycket av val som av nödvändighet eftersom min son fick celiakidiagnos för ett par år sedan och det glutenfria bröd som finns att köpa antingen är extremt dyrt, extremt tråkigt eller båda alternativen. Att då lyckas få fram några varianter av bröd som är lika gott som helt vanligt bröd med gluten är en utmaning, och att dessutom se till att det blir variation på brödet är ganska spännande.";
+  let contentParagraph3 = document.createElement('p');
+  contentParagraph3.textContent = "Om du är nyfiken på att själv baka glutenfritt så finns det några recept att hitta till vänster.";
   contentDiv.appendChild(contentTitle);
-  contentTitle.appendChild(contentText);
+  contentTitle.appendChild(contentParagraph1);
+  contentTitle.appendChild(contentParagraph2);
+  contentTitle.appendChild(contentParagraph3);
 
 }
 
