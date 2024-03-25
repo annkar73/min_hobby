@@ -15,10 +15,7 @@
 
 
 body {
-  margin: 5px;
-  display: flex;
-  min-width: 100vW;
-  min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
@@ -33,18 +30,28 @@ ul {
 li {
   margin-right: 10px;
 }
-#sidebar {
-  float: left;
-  width: 10vw;
-  background-color: aquamarine;
-  padding: 20px;
+
+header{
+  background-color: hotpink;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
+#sidebar {
+  width: 10vw;
+  background-color: aquamarine;
+  padding: 20px;
+  height: 100%;
+}
+
 #content {
-  /* display: block; */
-  float: right;
-  width: 90vw;
+  flex: 1;
   padding: 20px;
 }
 
