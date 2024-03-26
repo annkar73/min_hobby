@@ -1,4 +1,5 @@
 import './style.css'
+import recipes from './recipe.js';
 
 function showHome() {
   let contentDiv = document.getElementById('content');
@@ -60,7 +61,9 @@ recipeData.forEach(recipe => {
 
   let recipeTitle = document.createElement('h2');
   recipeTitle.textContent = recipe.name;
-  recipeDiv.appendChild(recipeTitle);
+
+  let ingredientsTitle = document.createElement('h2');
+  ingredientsTitle.textContent = "Ingredienser:";
 
   let ingredientsList = document.createElement('ul');
   recipe.ingredients.forEach(ingredient => {
@@ -69,17 +72,36 @@ recipeData.forEach(recipe => {
     ingredientsList.appendChild(ingredientItem);
 
   });
-  recipeDiv.appendChild(ingredientsList);
+  let instructionsTitle = document.createElement('h2');
+  instructionsTitle.textContent = "Gör så här:";
 
-  let instructionsParagraph = document.createElement('p');
-  instructionsParagraph.textContent = recipe.instructions;
-  recipeDiv.appendChild(instructionsParagraph);
+  let instructionsList = document.createElement('ol');
+  recipe.instructions.forEach(instruction => {
+    let instructionItem = document.createElement('li');
+    instructionItem.textContent = instruction;
+    instructionsList.appendChild(instructionItem);
+  });
+   let notesTitle = document.createElement('h2');
+   notesTitle.textContent = "Tips!";
 
-  contentDiv.appendChild(recipeDiv);
+   let notesList = document.createElement('ul');
+   recipe.notes.forEach(note => {
+    let noteItem = document.createElement('li');
+    noteItem.textContent = note;
+    notesList.appendChild(noteItem);
+   })
+  
+   contentDiv.appendChild(recipeTitle);
+   contentDiv.appendChild(ingredientsTitle);
+   contentDiv.appendChild(ingredientsList);
+   contentDiv.appendChild(instructionsTitle);
+   contentDiv.appendChild(instructionsList);
+   contentDiv.appendChild(notesTitle);
+   contentDiv.appendChild(notesList);
   
 });
-
 }
+showRecipes(recipes);
 
 document.getElementById("homeLink").addEventListener("click", showHome);
 document.getElementById("aboutLink"). addEventListener("click", showAbout);
