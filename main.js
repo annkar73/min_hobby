@@ -101,7 +101,6 @@ recipeData.forEach(recipe => {
   
 });
 }
-showRecipes(recipes);
 
 document.getElementById("homeLink").addEventListener("click", showHome);
 document.getElementById("aboutLink"). addEventListener("click", showAbout);
@@ -129,4 +128,6 @@ document.addEventListener("DOMContentLoaded", function() {
       dropBtn.contains(event.relatedTarget)
     );
   }
+  showRecipes(recipes);
+
 });
