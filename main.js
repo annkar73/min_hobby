@@ -49,6 +49,38 @@ function showContact() {
   contactTitle.appendChild(contactParagraph2);
 }
 
+function showRecipes(recipeData) {
+  let contentDiv = document.getElementById('content');
+contentDiv.textContent = "";
+
+recipeData.forEach(recipe => {
+  let recipeDiv = document.createElement('div');
+  recipeDiv.classList.add('recipe');
+
+
+  let recipeTitle = document.createElement('h2');
+  recipeTitle.textContent = recipe.name;
+  recipeDiv.appendChild(recipeTitle);
+
+  let ingredientsList = document.createElement('ul');
+  recipe.ingredients.forEach(ingredient => {
+    let ingredientItem = document.createElement('li');
+    ingredientItem.textContent = ingredient;
+    ingredientsList.appendChild(ingredientItem);
+
+  });
+  recipeDiv.appendChild(ingredientsList);
+
+  let instructionsParagraph = document.createElement('p');
+  instructionsParagraph.textContent = recipe.instructions;
+  recipeDiv.appendChild(instructionsParagraph);
+
+  contentDiv.appendChild(recipeDiv);
+  
+});
+
+}
+
 document.getElementById("homeLink").addEventListener("click", showHome);
 document.getElementById("aboutLink"). addEventListener("click", showAbout);
 document.getElementById("contactLink").addEventListener("click", showContact);
