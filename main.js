@@ -134,4 +134,21 @@ document.getElementById("contactLink").addEventListener("click", function() {
 document.addEventListener("DOMContentLoaded", function() {
   generateRecipeLinks(recipes);
 
+  function updateTime() {
+    let currentTimeElement = document.getElementById('currentTime');
+    if (currentTimeElement) {
+      let now = new Date();
+      let days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+      let dayOfWeek = days[now.getDay()];
+      let date = now.getDate();
+      let month = now.getMonth() + 1;
+      let year = now.getFullYear();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      currentTimeElement.textContent = "Idag är det " + dayOfWeek + " " +  date + "/" + month + "/" + year + " och klockan är "  + hours + ":" + minutes + ":" + seconds;
+    }
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
 });

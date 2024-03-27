@@ -101,6 +101,25 @@ header{
   margin: 0 auto;
 }
 
+@keyframes roll {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  animation: roll 15s linear infinite;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
