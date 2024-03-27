@@ -123,13 +123,21 @@ showHome();
 document.addEventListener("DOMContentLoaded", function() {
   generateRecipeLinks(recipes);
 
-  window.addEventListener('resize', function() {
-    const sidebar = document.getElementById('sidebar');
-    const header = document.querySelector('header');
-    const dropdownContent = document.querySelector('.dropdown-content');
-
-    if (window.innerWidth <= 768 && sidebar.offsetTop < header.offsetHeight && dropdownContent.style.display === 'block') {
-      dropdownContent.style.display = 'none';
+  function updateTime() {
+    let currentTimeElement = document.getElementById('currentTime');
+    if (currentTimeElement) {
+      let now = new Date();
+      let days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+      let dayOfWeek = days[now.getDay()];
+      let date = now.getDate();
+      let month = now.getMonth() + 1;
+      let year = now.getFullYear();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      currentTimeElement.textContent = "Idag är det " + dayOfWeek + " " +  date + "/" + month + "/" + year + " och klockan är "  + hours + ":" + minutes + ":" + seconds;
     }
-  });
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
 });
