@@ -25,57 +25,71 @@ h1 {
 
 p {
   font-size: 1rem;
+  font-weight: normal;
+}
+a {
+  cursor: pointer;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
 }
-li {
+#navMenu li {
   margin-right: 10px;
 }
-
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
+#navMenu a {
   color: black;
-  padding: 10px 15px;
+  font-weight: bold;
   text-decoration: none;
   display: block;
+  padding: 10px;
 }
-.dropdown-content a:hover {
-  background-color: lightgoldenrodyellow;
+#navMenu a:hover {
+  background-color: bisque;
   color: #242424;
+  text-decoration: none;
 }
-.dropdown:hover .dropdown-content {
-  display: block;
+#navMenu a:visited {
+  color: black;
 }
-.dropdown:hover .dropBtn {
-  background-color: #3e8e41;
+#recipeLink {
+  font-weight: bold;
+  padding: 10px;
+  color: black;
 }
+
+.submenu li a {
+  font-weight: normal !important;
+  padding-left: 25px;
+  position: relative;
+}
+.submenu a::before {
+  content: "-";
+  margin-right: 5px;
+  color: black;
+}
+
 
 
 header{
-  background-color: hotpink;
-  color: black;
+  background-image: url('/img/baguette.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
   text-align: center;
   padding: 10px 0;
 }
 .wrapper {
   display: flex;
+  background-color: bisque;
+
 }
 
 #sidebar {
-  width: 10vw;
+  width: 20vw;
   height: 100vh;
-  background-color: aquamarine;
+  background-color: #daa350;
   padding: 20px;
 }
 
@@ -83,6 +97,8 @@ header{
   flex: 1;
   padding: 20px;
   margin: 15px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 
@@ -96,5 +112,16 @@ header{
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  #sidebar {
+    width: 100%;
+    padding: 10px;
+    height: auto;
   }
 }

@@ -52,15 +52,10 @@ function showContact() {
   contactTitle.appendChild(contactParagraph1);
   contactTitle.appendChild(contactParagraph2);
 }
-function showRecipes(recipeData) {
-  console.log("visar recept");
+
+function showRecipe(recipe) {
   let contentDiv = document.getElementById('content');
-contentDiv.textContent = "";
-
-recipeData.forEach(recipe => {
-  let recipeDiv = document.createElement('div');
-  recipeDiv.classList.add('recipe');
-
+  contentDiv.textContent = "";
 
   let recipeTitle = document.createElement('h2');
   recipeTitle.textContent = recipe.name;
@@ -73,8 +68,8 @@ recipeData.forEach(recipe => {
     let ingredientItem = document.createElement('li');
     ingredientItem.textContent = ingredient;
     ingredientsList.appendChild(ingredientItem);
-
   });
+
   let instructionsTitle = document.createElement('h2');
   instructionsTitle.textContent = "Gör så här:";
 
@@ -84,31 +79,50 @@ recipeData.forEach(recipe => {
     instructionItem.textContent = instruction;
     instructionsList.appendChild(instructionItem);
   });
-   let notesTitle = document.createElement('h2');
-   notesTitle.textContent = "Tips!";
 
-   let notesList = document.createElement('ul');
-   recipe.notes.forEach(note => {
+  let notesTitle = document.createElement('h2');
+  notesTitle.textContent = "Tips!";
+
+  let notesList = document.createElement('ul');
+  recipe.notes.forEach(note => {
     let noteItem = document.createElement('li');
     noteItem.textContent = note;
     notesList.appendChild(noteItem);
-   })
-  
-   contentDiv.appendChild(recipeTitle);
-   contentDiv.appendChild(ingredientsTitle);
-   contentDiv.appendChild(ingredientsList);
-   contentDiv.appendChild(instructionsTitle);
-   contentDiv.appendChild(instructionsList);
-   contentDiv.appendChild(notesTitle);
-   contentDiv.appendChild(notesList);
-  
-});
+  })
+
+  contentDiv.appendChild(recipeTitle);
+  contentDiv.appendChild(ingredientsTitle);
+  contentDiv.appendChild(ingredientsList);
+  contentDiv.appendChild(instructionsTitle);
+  contentDiv.appendChild(instructionsList);
+  contentDiv.appendChild(notesTitle);
+  contentDiv.appendChild(notesList);
 }
 
+function generateRecipeLinks(recipeData) {
+  const recipeSubmenu = document.getElementById('recipeSubmenu');
+  recipeSubmenu.textContent = ""; 
 
-document.getElementById("homeLink").addEventListener("click", function() {
+  recipeData.forEach(recipe => {
+    const recipeLink = document.createElement('li');
+    const link = document.createElement('a');
+    link.textContent = recipe.name;
+
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      showRecipe(recipe);
+    });
+    recipeLink.appendChild(link);
+    recipeSubmenu.appendChild(recipeLink);
+  });
+}
+
+document.getElementById("homeLink").addEventListener("click", showHome);
+document.getElementById("aboutLink").addEventListener("click", showAbout);
+document.getElementById("contactLink").addEventListener("click", showContact);
+
 showHome();
-});
+
 document.getElementById("aboutLink"). addEventListener("click", function() {
   showAbout();
 });
@@ -118,34 +132,6 @@ document.getElementById("contactLink").addEventListener("click", function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  showHome();
+  generateRecipeLinks(recipes);
 
-  const dropBtn = document.querySelector(".dropBtn");
-  const dropdownContent = document.querySelector(".dropdown-content");
-
-  dropBtn.addEventListener("mouseenter", function() {
-    dropdownContent.style.display = "block";
-  });
-
-  dropdownContent.addEventListener("mouseleave", function(event) {
-    if (!isMouseInsideDropdown(event)) {
-      dropdownContent.style.display = "none";}
-
-  });
-
-  function isMouseInsideDropdown(event) {
-    return (
-      dropdownContent.contains(event.relatedTarget) ||
-      dropBtn.contains(event.relatedTarget)
-    );
-  }
-  const recipeLinks = document.querySelectorAll('.dropdown-content a');
-  recipeLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      const recipeName = this.textContent;
-      const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
-      showRecipes([selectedRecipe]);
-    })
-  })
 });
