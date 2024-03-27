@@ -11,7 +11,7 @@ function showHome() {
   let contentParagraph2 = document.createElement('p');
   contentParagraph2.textContent = "Min huvudsakliga hobby nuförtiden är dock att baka glutenfritt. Inte så mycket av val som av nödvändighet eftersom min son fick celiakidiagnos för ett par år sedan och det glutenfria bröd som finns att köpa antingen är extremt dyrt, extremt tråkigt eller båda alternativen. Att då lyckas få fram några varianter av bröd som är lika gott som helt vanligt bröd med gluten är en utmaning, och att dessutom se till att det blir variation på brödet är ganska spännande.";
   let contentParagraph3 = document.createElement('p');
-  contentParagraph3.textContent = "Om du är nyfiken på att själv baka glutenfritt så finns det några recept att hitta i menyn.";
+  contentParagraph3.textContent = "Om du är nyfiken på att själv baka glutenfritt så finns det några recept i menyn.";
   contentDiv.appendChild(contentTitle);
   contentTitle.appendChild(contentParagraph1);
   contentTitle.appendChild(contentParagraph2);
