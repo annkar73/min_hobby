@@ -116,6 +116,7 @@ footer {
   bottom: 0;
   width: 100vw;
   color: black;
+  font-style: italic;
   text-align: center;
   padding: 10px 0;
   animation: roll 15s linear infinite;
