@@ -49,14 +49,10 @@ function showContact() {
   contactTitle.appendChild(contactParagraph1);
   contactTitle.appendChild(contactParagraph2);
 }
-function showRecipes(recipeData) {
+
+function showRecipe(recipe) {
   let contentDiv = document.getElementById('content');
-contentDiv.textContent = "";
-
-recipeData.forEach(recipe => {
-  let recipeDiv = document.createElement('div');
-  recipeDiv.classList.add('recipe');
-
+  contentDiv.textContent = "";
 
   let recipeTitle = document.createElement('h2');
   recipeTitle.textContent = recipe.name;
@@ -69,8 +65,8 @@ recipeData.forEach(recipe => {
     let ingredientItem = document.createElement('li');
     ingredientItem.textContent = ingredient;
     ingredientsList.appendChild(ingredientItem);
-
   });
+
   let instructionsTitle = document.createElement('h2');
   instructionsTitle.textContent = "Gör så här:";
 
@@ -80,53 +76,60 @@ recipeData.forEach(recipe => {
     instructionItem.textContent = instruction;
     instructionsList.appendChild(instructionItem);
   });
-   let notesTitle = document.createElement('h2');
-   notesTitle.textContent = "Tips!";
 
-   let notesList = document.createElement('ul');
-   recipe.notes.forEach(note => {
+  let notesTitle = document.createElement('h2');
+  notesTitle.textContent = "Tips!";
+
+  let notesList = document.createElement('ul');
+  recipe.notes.forEach(note => {
     let noteItem = document.createElement('li');
     noteItem.textContent = note;
     notesList.appendChild(noteItem);
-   })
-  
-   contentDiv.appendChild(recipeTitle);
-   contentDiv.appendChild(ingredientsTitle);
-   contentDiv.appendChild(ingredientsList);
-   contentDiv.appendChild(instructionsTitle);
-   contentDiv.appendChild(instructionsList);
-   contentDiv.appendChild(notesTitle);
-   contentDiv.appendChild(notesList);
-  
-});
+  })
+
+  contentDiv.appendChild(recipeTitle);
+  contentDiv.appendChild(ingredientsTitle);
+  contentDiv.appendChild(ingredientsList);
+  contentDiv.appendChild(instructionsTitle);
+  contentDiv.appendChild(instructionsList);
+  contentDiv.appendChild(notesTitle);
+  contentDiv.appendChild(notesList);
 }
 
+function generateRecipeLinks(recipeData) {
+  const recipeSubmenu = document.getElementById('recipeSubmenu');
+  recipeSubmenu.textContent = ""; 
+
+  recipeData.forEach(recipe => {
+    const recipeLink = document.createElement('li');
+    const link = document.createElement('a');
+    link.textContent = recipe.name;
+
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      showRecipe(recipe);
+    });
+    recipeLink.appendChild(link);
+    recipeSubmenu.appendChild(recipeLink);
+  });
+}
 
 document.getElementById("homeLink").addEventListener("click", showHome);
-document.getElementById("aboutLink"). addEventListener("click", showAbout);
+document.getElementById("aboutLink").addEventListener("click", showAbout);
 document.getElementById("contactLink").addEventListener("click", showContact);
 
 showHome();
 
 document.addEventListener("DOMContentLoaded", function() {
-  const dropBtn = document.querySelector(".dropBtn");
-  const dropdownContent = document.querySelector(".dropdown-content");
+  generateRecipeLinks(recipes);
 
-  dropBtn.addEventListener("mouseenter", function() {
-    dropdownContent.style.display = "block";
+  window.addEventListener('resize', function() {
+    const sidebar = document.getElementById('sidebar');
+    const header = document.querySelector('header');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    if (window.innerWidth <= 768 && sidebar.offsetTop < header.offsetHeight && dropdownContent.style.display === 'block') {
+      dropdownContent.style.display = 'none';
+    }
   });
-
-  dropdownContent.addEventListener("mouseleave", function(event) {
-    if (!isMouseInsideDropdown(event)) {
-      dropdownContent.style.display = "none";}
-
-  });
-
-  function isMouseInsideDropdown(event) {
-    return (
-      dropdownContent.contains(event.relatedTarget) ||
-      dropBtn.contains(event.relatedTarget)
-    );
-  }
-  showRecipes(recipes);
 });

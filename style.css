@@ -27,59 +27,49 @@ p {
   font-size: 1rem;
   font-weight: normal;
 }
+a {
+  cursor: pointer;
+}
 
 ul {
   list-style-type: none;
   padding: 0;
 }
-li {
+#navMenu li {
   margin-right: 10px;
 }
-a {
+#navMenu a {
   color: black;
   font-weight: bold;
   text-decoration: none;
   display: block;
   padding: 10px;
 }
-a:hover {
+#navMenu a:hover {
   background-color: bisque;
   color: #242424;
   text-decoration: none;
 }
-a:visited {
+#navMenu a:visited {
+  color: black;
+}
+#recipeLink {
+  font-weight: bold;
+  padding: 10px;
   color: black;
 }
 
+.submenu li a {
+  font-weight: normal !important;
+  padding-left: 25px;
+  position: relative;
+}
+.submenu a::before {
+  content: "-";
+  margin-right: 5px;
+  color: black;
+}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  font-weight: normal;
-  padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content a:hover {
-  background-color: bisque;
-  color: #242424;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown:hover .dropBtn {
-  background-color: #3e8e41;
-}
-.dropdown-content a:visited {
-  color: black;
-}
 
 
 header{
@@ -97,7 +87,7 @@ header{
 }
 
 #sidebar {
-  width: 10vw;
+  width: 20vw;
   height: 100vh;
   background-color: #daa350;
   padding: 20px;
