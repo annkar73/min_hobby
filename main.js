@@ -1,7 +1,8 @@
 import './style.css'
-import recipes from './recipe';
+import recipes from './recipe.js';
 
 function showHome() {
+  console.log("visar startsidan");
   let contentDiv = document.getElementById('content');
   contentDiv.textContent = "";
   let contentTitle = document.createElement('h1');
@@ -20,6 +21,7 @@ function showHome() {
 }
 
 function showAbout() {
+  console.log("visar information om mig");
   let contentDiv = document.getElementById('content');
   contentDiv.textContent = "";
   let aboutTitle = document.createElement('h1');
@@ -36,6 +38,7 @@ function showAbout() {
 }
 
 function showContact() {
+  console.log("visar kontaktinformation");
   let contentDiv = document.getElementById('content');
   contentDiv.textContent = "";
   let contactTitle = document.createElement('h2');
@@ -50,6 +53,7 @@ function showContact() {
   contactTitle.appendChild(contactParagraph2);
 }
 function showRecipes(recipeData) {
+  console.log("visar recept");
   let contentDiv = document.getElementById('content');
 contentDiv.textContent = "";
 
@@ -102,13 +106,20 @@ recipeData.forEach(recipe => {
 }
 
 
-document.getElementById("homeLink").addEventListener("click", showHome);
-document.getElementById("aboutLink"). addEventListener("click", showAbout);
-document.getElementById("contactLink").addEventListener("click", showContact);
-
+document.getElementById("homeLink").addEventListener("click", function() {
 showHome();
+});
+document.getElementById("aboutLink"). addEventListener("click", function() {
+  showAbout();
+});
+document.getElementById("contactLink").addEventListener("click", function() {
+  showContact();
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
+  showHome();
+
   const dropBtn = document.querySelector(".dropBtn");
   const dropdownContent = document.querySelector(".dropdown-content");
 
@@ -128,5 +139,13 @@ document.addEventListener("DOMContentLoaded", function() {
       dropBtn.contains(event.relatedTarget)
     );
   }
-  showRecipes(recipes);
+  const recipeLinks = document.querySelectorAll('.dropdown-content a');
+  recipeLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      const recipeName = this.textContent;
+      const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
+      showRecipes([selectedRecipe]);
+    })
+  })
 });

@@ -1,6 +1,6 @@
 const recipes = [
     {
-        name: "Oskars frukostrutor",
+        name: "Oskars glutenfria frukostrutor",
         ingredients: [
             "500 g Semper Mix (spara ca 1 dl till utbakning)",
             "3 dl fingervarmt vatten",
