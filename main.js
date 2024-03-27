@@ -1,4 +1,5 @@
 import './style.css'
+import recipes from './recipe';
 
 function showHome() {
   let contentDiv = document.getElementById('content');
@@ -48,6 +49,58 @@ function showContact() {
   contactTitle.appendChild(contactParagraph1);
   contactTitle.appendChild(contactParagraph2);
 }
+function showRecipes(recipeData) {
+  let contentDiv = document.getElementById('content');
+contentDiv.textContent = "";
+
+recipeData.forEach(recipe => {
+  let recipeDiv = document.createElement('div');
+  recipeDiv.classList.add('recipe');
+
+
+  let recipeTitle = document.createElement('h2');
+  recipeTitle.textContent = recipe.name;
+
+  let ingredientsTitle = document.createElement('h2');
+  ingredientsTitle.textContent = "Ingredienser:";
+
+  let ingredientsList = document.createElement('ul');
+  recipe.ingredients.forEach(ingredient => {
+    let ingredientItem = document.createElement('li');
+    ingredientItem.textContent = ingredient;
+    ingredientsList.appendChild(ingredientItem);
+
+  });
+  let instructionsTitle = document.createElement('h2');
+  instructionsTitle.textContent = "Gör så här:";
+
+  let instructionsList = document.createElement('ol');
+  recipe.instructions.forEach(instruction => {
+    let instructionItem = document.createElement('li');
+    instructionItem.textContent = instruction;
+    instructionsList.appendChild(instructionItem);
+  });
+   let notesTitle = document.createElement('h2');
+   notesTitle.textContent = "Tips!";
+
+   let notesList = document.createElement('ul');
+   recipe.notes.forEach(note => {
+    let noteItem = document.createElement('li');
+    noteItem.textContent = note;
+    notesList.appendChild(noteItem);
+   })
+  
+   contentDiv.appendChild(recipeTitle);
+   contentDiv.appendChild(ingredientsTitle);
+   contentDiv.appendChild(ingredientsList);
+   contentDiv.appendChild(instructionsTitle);
+   contentDiv.appendChild(instructionsList);
+   contentDiv.appendChild(notesTitle);
+   contentDiv.appendChild(notesList);
+  
+});
+}
+
 
 document.getElementById("homeLink").addEventListener("click", showHome);
 document.getElementById("aboutLink"). addEventListener("click", showAbout);
@@ -75,4 +128,5 @@ document.addEventListener("DOMContentLoaded", function() {
       dropBtn.contains(event.relatedTarget)
     );
   }
+  showRecipes(recipes);
 });
