@@ -1,5 +1,5 @@
 import './style.css'
-import recipes from './recipe.js';
+import recipes from './recipe';
 
 function showHome() {
   let contentDiv = document.getElementById('content');
@@ -49,7 +49,6 @@ function showContact() {
   contactTitle.appendChild(contactParagraph1);
   contactTitle.appendChild(contactParagraph2);
 }
-
 function showRecipes(recipeData) {
   let contentDiv = document.getElementById('content');
 contentDiv.textContent = "";
@@ -102,6 +101,7 @@ recipeData.forEach(recipe => {
 });
 }
 
+
 document.getElementById("homeLink").addEventListener("click", showHome);
 document.getElementById("aboutLink"). addEventListener("click", showAbout);
 document.getElementById("contactLink").addEventListener("click", showContact);
@@ -129,5 +129,4 @@ document.addEventListener("DOMContentLoaded", function() {
     );
   }
   showRecipes(recipes);
-
 });
