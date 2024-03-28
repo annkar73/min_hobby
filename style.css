@@ -27,6 +27,7 @@ p {
   font-size: 1rem;
   font-weight: normal;
 }
+
 a {
   cursor: pointer;
 }
@@ -35,9 +36,11 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 #navMenu li {
   margin-right: 10px;
 }
+
 #navMenu a {
   color: black;
   font-weight: bold;
@@ -45,14 +48,17 @@ ul {
   display: block;
   padding: 10px;
 }
+
 #navMenu a:hover {
   background-color: bisque;
   color: #242424;
   text-decoration: none;
 }
+
 #navMenu a:visited {
   color: black;
 }
+
 #recipeLink {
   font-weight: bold;
   padding: 10px;
@@ -64,6 +70,7 @@ ul {
   padding-left: 25px;
   position: relative;
 }
+
 .submenu a::before {
   content: "-";
   margin-right: 5px;
@@ -78,10 +85,12 @@ header {
   text-align: center;
   padding: 10px 0;
 }
+
 #headerText {
   cursor: pointer;
   position: relative;
 }
+
 #headerText::after {
   content: url("/img/easter-egg-icon.svg");
   display: none;
@@ -89,9 +98,11 @@ header {
   top: 20px;
   left: 55%;
 }
+
 #headerText:hover::after {
   display: block;
 }
+
 .wrapper {
   display: flex;
   background-color: bisque;
@@ -114,7 +125,7 @@ header {
   background-color: bisque;
   min-height: calc(100vh - 40px);
 }
-
+/* roll keyframe for footer */
 @keyframes roll {
   from {
     transform: translateX(-100%);
