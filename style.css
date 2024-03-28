@@ -13,7 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
   margin: 0;
   background-color: bisque;
@@ -71,21 +70,32 @@ ul {
   color: black;
 }
 
-
-
-header{
-  background-image: url('/img/baguette.jpg');
+header {
+  background-image: url("/img/baguette.jpg");
   background-size: cover;
   background-position: center;
   color: white;
   text-align: center;
   padding: 10px 0;
 }
+#headerText {
+  cursor: pointer;
+  position: relative;
+}
+#headerText::after {
+  content: url("/img/easter-egg-icon.svg");
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 55%;
+}
+#headerText:hover::after {
+  display: block;
+}
 .wrapper {
   display: flex;
   background-color: bisque;
   min-height: 100vh;
-
 }
 
 #sidebar {
