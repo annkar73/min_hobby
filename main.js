@@ -2,8 +2,7 @@ import './style.css'
 import recipes from './recipe.js';
 
 function showHome() {
-  console.log("visar startsidan");
-  let contentDiv = document.getElementById('content');
+  let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let contentTitle = document.createElement('h1');
   contentTitle.textContent = "Välkommen!";
@@ -21,8 +20,7 @@ function showHome() {
 }
 
 function showAbout() {
-  console.log("visar information om mig");
-  let contentDiv = document.getElementById('content');
+  let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let aboutTitle = document.createElement('h1');
   aboutTitle.textContent = "Om mig";
@@ -38,15 +36,15 @@ function showAbout() {
 }
 
 function showContact() {
-  console.log("visar kontaktinformation");
-  let contentDiv = document.getElementById('content');
+  let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let contactTitle = document.createElement('h2');
   contactTitle.textContent = "Kontakta mig:";
-  let contactParagraph1 = document.createElement('p');
-  contactParagraph1.textContent = "Via mail:";
-  let contactParagraph2 = document.createElement('p');
-  contactParagraph2.textContent = "Via LinkedIn:";
+  let contactParagraph1 = document.createElement("p");
+  contactParagraph1.textContent = "Via mail: karlsen1973@outlook.com";
+  let contactParagraph2 = document.createElement("p");
+  contactParagraph2.textContent =
+    "Via LinkedIn: https://www.linkedin.com/in/annakarlsen/";
 
   contentDiv.appendChild(contactTitle);
   contactTitle.appendChild(contactParagraph1);
