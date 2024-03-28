@@ -13,7 +13,6 @@ const headerText = document.getElementById("headerText");
 headerText.addEventListener("click", easterEgg);
 
 function showHome() {
-  console.log("visar startsidan");
   let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let contentTitle = document.createElement("h1");
@@ -34,7 +33,6 @@ function showHome() {
 }
 
 function showAbout() {
-  console.log("visar information om mig");
   let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let aboutTitle = document.createElement("h1");
@@ -52,15 +50,15 @@ function showAbout() {
 }
 
 function showContact() {
-  console.log("visar kontaktinformation");
   let contentDiv = document.getElementById("content");
   contentDiv.textContent = "";
   let contactTitle = document.createElement("h2");
   contactTitle.textContent = "Kontakta mig:";
   let contactParagraph1 = document.createElement("p");
-  contactParagraph1.textContent = "Via mail:";
+  contactParagraph1.textContent = "Via mail: karlsen1973@outlook.com";
   let contactParagraph2 = document.createElement("p");
-  contactParagraph2.textContent = "Via LinkedIn:";
+  contactParagraph2.textContent =
+    "Via LinkedIn: https://www.linkedin.com/in/annakarlsen/";
 
   contentDiv.appendChild(contactTitle);
   contactTitle.appendChild(contactParagraph1);
